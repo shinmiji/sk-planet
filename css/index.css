@@ -1,0 +1,718 @@
+@charset "utf-8";
+/*reset*/
+html, header, main, footer, body, div, ul, li, a, img, strong, section, p, h1, h2, h3, h4, h5 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	color: #777;
+	font-size: 12px;
+	font-family: "SKPGo M", "dotum", "gulim", "verdana", sans-serif;
+}
+ul, li {
+	list-style: none;
+}
+a, a:active, a:hover, a:focus, a:visited {
+	text-decoration: none;
+}
+img {
+	border: none;
+}
+.clear_fix:after {
+	display: block;
+	content: ' ';
+	clear: both;
+}
+
+
+/*skip navigation*/
+#skip_nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 20;
+}
+#skip_nav a {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 0px;
+	background-color: #eee;
+	font-weight: bold;
+	font-size: 0px;
+	text-align: center;
+}
+#skip_nav a:focus {
+	padding: 5px 0;
+	height: 16px;
+	font-size: 14px;
+}
+.a11y-hidden {
+	overflow: hidden;
+	position: absolute;
+	clip:     rect(0 0 0 0);
+	clip:     rect(0,0,0,0);
+	width:    1px;
+	height:   1px;
+	margin:   -1px;
+	padding:  0;
+	border:   0;
+}
+.a11y-hidden.focusable:focus,
+.a11y-hidden.focusable:active {
+	overflow: visible;
+	position: static;
+	clip:     auto;
+	width:    auto;
+	height:   auto;
+	margin:   0;
+}
+
+/*header*/
+header {
+	/*javascript에서 휠 동작 시 position을 fixed로 고정시키도록 해줘야 함*/
+	position: absolute;
+	top:0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 112px;
+	background: rgba(255,255,255,0.9);
+	/*메뉴에 마우스가 올라가거나, 포커스 발생 시 다음과같이 css설정 후 two-depth, three-depth 메뉴 적절하게 펼지도록 js 설정*/
+	/*height: 203px;
+	background-image: url('../images/header/bg.png');*/
+}
+.header_group {
+	position: relative;
+	width: 1200px;
+	margin: 0 auto;
+}
+.header_logo {
+	display: block;
+	float: left;
+	margin-top: 28px;
+}
+/*header snb*/
+.snb {
+	position: absolute;
+	top: 20px;
+	right:0;
+}
+.snb > * {
+	float: left;
+}
+.snb_links li {
+	float: left;
+	margin-top: 2px;
+}
+.snb_links a {
+	display: block;
+	padding: 0 9px 0 10px;
+	background: url('../images/header/snb/snb_bar.gif') no-repeat left 40%;
+}
+.snb_links li:first-child a {
+	background: none;
+}
+.facebook_links {
+	margin-left: 3px;
+}
+.facebook_unfd {
+	display: block;
+	width: 92px;
+	height: 19px;
+	background: url('../images/header/snb/btn_facebook_off.png') no-repeat;
+	text-indent: -9999px;
+}
+#facebook {
+	display: none;
+	position: relative;
+	margin-top:-1px;
+	z-index: 10;
+}
+.facebook_unfd.view {
+	background-image: url('../images/header/snb/btn_facebook_on.png');
+}
+.facebook_unfd.view + #facebook {
+	display: block;
+	/*js: view class 존재할 경우 하위메뉴 보여지도록 처리*/
+}
+#facebook *{
+	font-size: 0;
+}
+
+/*header gnb*/
+.one_depth {
+	float: right;
+	margin-top: 65px;
+}
+.one_depth a {
+	font-weight: bold;
+	font-size: 13px;
+}
+.one_depth > li {
+	position: relative;
+	float: left;
+}
+.one_depth > li > a {
+	display: block;
+	padding: 0 53px 26px 52px;
+	height: 15px;
+	background: url('../images/header/gnb/gnb_bar.gif') no-repeat right top;
+	font-size: 0;
+}
+.one_depth > li:last-child >a {
+	padding-right: 0;
+	background: none;
+}
+.two_depth {
+	display: none;
+	position: absolute;
+	top: 38px;
+	width: 950px;
+}
+.two_depth > li {
+	position: relative;
+	float: left;
+}
+.two_depth > li > a {
+	display: inline-block;
+	padding: 15px 20px;
+	color: white;
+}
+.gnb_planet {
+	left: -190px
+}
+.gnb_areas {
+	left: -140px;
+}
+.gnb_innovation {
+	left: -90px;
+}
+.gnb_center {
+	left: -3px;
+}
+.gnb_careers {
+	left: -54px;
+}
+.three_depth {
+	display: none;
+	position: absolute;
+	width: 950px;
+}
+.three_depth li {
+	float: left;
+}
+.three_depth a {
+	display: inline-block;
+	padding: 16px 18px 17px 10px;
+	background: url('../images/header/gnb/gnb_bul_off.gif') no-repeat left center;
+	color: #464646;
+}
+.three_depth a:focus,
+.three_depth a:hover {
+	background-image: url('../images/header/gnb/gnb_bul_on.gif');
+	color: #FF7A00;
+}
+.three_ethics {
+	left: -120px;
+}
+.three_commerce {
+	left: -40px;
+}
+.three_platform {
+	left: -175px;
+}
+.three_communication {
+	left: 10px;
+}
+.three_career {
+	left: -270px;
+}
+
+
+/*main*/
+main {
+	margin-top: 112px;
+	/*margin-top: 112px; 처음에는 0이다가 스크롤하면 position fixed하면서 margin-top또한 112px로 수정해 주어야 한다.*/
+}
+.radio_btn a,
+.stop_start_btn,
+.direction_btn {
+	text-indent: -9999px;
+}
+.advertisement {
+	position: relative;
+}
+.ad_view { 
+	width: 100%;
+	overflow: hidden;
+}
+.ad_view> ul {
+	width: 400%;
+}
+.ad_view li {
+	float: left;
+	width: 25%;
+}
+.ad_view .intro1 {
+	background: url('../images/main/ad_introduction/intro1_bg.jpg');
+}
+.ad_view .intro2 {
+	background: url('../images/main/ad_introduction/intro2_bg.jpg');
+}
+.ad_view .intro3 {
+	background: url('../images/main/ad_introduction/intro3_bg.jpg');
+}
+.ad_view .intro4 {
+	background: url('../images/main/ad_introduction/intro4_bg.jpg');
+}
+.ad_view a {
+	display: block;
+	margin: 0 auto;
+	width: 1000px;
+}
+.radio_btn {
+	float: left;
+}
+.radio_btn a {
+	float: left;
+}
+.ad_btn_group .stop_start_btn {
+	display: block;
+	float: left;
+	margin-right: 8px;
+	width: 18px;
+	height: 19px;
+	background: url('../images/main/ad_introduction/control_btn.png') no-repeat -19px top;
+}
+.ad_btn_group .radio_btn a {
+	display: block;
+	padding: 5px 3px;
+	width: 8px;
+	height: 8px;
+	background: url('../images/main/ad_introduction/nav_btn.png') no-repeat -15px 5px;
+}
+.ad_btn_group .direction_btn {
+	display: block;
+	position: absolute;
+	bottom: 119px;
+	width: 20px;
+	height: 40px;
+	background: url('../images/main/ad_introduction/prev_next_btn.png') no-repeat;
+}
+.ad_btn_group .prev_btn {
+	left: 41px;
+	background-position: left top;
+}
+.ad_btn_group .next_btn {
+	right: 41px;
+	background-position: right top;
+}
+.ad_btn_area {
+	position: absolute;
+	bottom: 25px;
+	left: 50%;
+	margin-left: -37px;
+}
+
+
+/*contents*/
+#contents {
+	margin: 0 auto;
+	width: 1280px;
+}
+section {
+	float: left;
+	margin-top: 50px;
+	padding-left: 39px;
+	height: 180px;
+	border-right: 1px solid #d6d6d6;
+}
+section.col1 {
+	width: 280px;
+}
+section.col2 {
+	width: 600px;
+}
+section > img {
+	margin-bottom: 30px;
+}
+section > h2 {
+	margin-bottom: 8px;
+	font-size: 0;
+}
+section > ul > li {
+	float: left;
+	margin-left: 31px;
+}
+section > ul > li:first-child {
+	margin-left: 0;
+}
+
+/*contents_up business area section*/
+.content_up {
+	border-bottom: 1px solid #d6d6d6;
+}
+section.mission{
+	border: none;
+}
+section.mission li {
+	margin-left: 50px;
+}
+section.mission li:first-child {
+	margin-left: 0;
+}
+section.banner {
+	position: relative;
+	padding: 0;
+	margin:0 0 0 1px;
+	width: 320px;
+	height: 280px;
+	border: none;
+}
+.banner_view {
+	margin-top: -8px;
+	width: 100%;
+	overflow: hidden;
+}
+.banner_view ul {
+	width: 200%;
+}
+.banner_view li {
+	width: 50%;
+	float: left;
+}
+.banner_btn_group .stop_start_btn {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url('../images/main/banner/control_btn.png') no-repeat;
+}
+.banner_btn_group .radio_btn a{
+	display: block;
+	width: 13px;
+	height: 13px;
+	margin-top: 3px;
+	margin-left: 5px;
+	background: url('../images/main/banner/nav_btn.png') no-repeat top right;
+}
+.banner_btn_area {
+	position: absolute;
+	left: 47px;
+	bottom: 38px;
+}
+.banner_btn_area > * {
+	float: left;
+}
+.banner .direction_btn {
+	display: block;
+	position: absolute;
+	bottom: 127px;
+	width: 13px;
+	height: 27px;
+	background: url('../images/main/banner/prev_next_btn.png') no-repeat;
+}
+.banner .prev_btn {
+	left: 15px;
+	background-position: left;
+}
+
+.banner .next_btn {
+	right: 15px;
+	background-position: right;
+}
+
+/*contents_middle*/
+.content_mid.change {
+	margin-top: 262px;
+}
+.event h2,
+.sk_planet_links h2{
+	margin: 0;
+}
+.event {
+	border: none;
+}
+.event > a {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	width: 180px;
+}
+.event > a:last-child {
+	margin-right: 0px;
+}
+.event > a > p {
+	margin-top: 10px;
+	margin-left: 5px;
+	font-size: 11px;
+	color: #7c7c7c;
+	line-height: 18px;
+}
+.event > a > strong {
+	margin-left: 5px;
+	font-weight: bold;
+	font-family: 'SKPGO B';
+	color: #444;
+}
+.event_img {
+	margin-bottom: 17px;
+	overflow: hidden;
+	width: 181px;
+	height: 110px;
+}
+.event_img img {
+	width: 100%;
+	min-height: 110px;
+}
+section.sk_planet_links {
+	margin: 0;
+	padding: 0;
+	width: 320px;
+	height: 280px;
+	border: none;
+}
+.sk_planet_links li {
+	float: left;
+	margin: 0;
+	border-left: 1px solid #d6d6d6;
+}
+.sk_planet_links li:first-child,
+.sk_planet_links li:first-child+li {
+	border-bottom: 1px solid #d6d6d6;
+}
+.sk_planet_links a {
+	display: block;
+	padding-top: 38px;
+	width: 158px;
+	height: 102px;
+	text-align: center;
+
+}
+
+/*content down*/
+.content_dn section {
+	height: 55px;
+	border-top: 1px solid #959595;
+	border-bottom: 1px solid #666666;
+	border-right: none;
+	margin: 0 0 0 0;
+	padding: 0 0 0 40px;
+	line-height: 55px;
+}
+.content_dn section > * {
+	float: left;
+	font-family: SKPGO B;
+}
+.title {
+	display: block;
+	width: 265px;
+}
+.content_dn img {
+	vertical-align: middle;
+}
+.content_dn h3 {
+	margin-right: 70px;
+}
+
+
+/*footer*/
+footer {
+	margin: 0 auto;
+	padding-bottom: 30px;
+	width: 1200px;
+	/*background-color: #ECECEC;*/
+}
+footer h4 {
+	float: left;
+	margin-top: 43px;
+	margin-right: 45px;
+	width: 87px;
+	height: 40px;
+	background: url('../images/footer/logo.png') no-repeat;
+	text-indent: -9999px;
+}
+.footer_cen{
+	float: left;
+	margin-top: 36px;
+}
+.footer_cen li{
+	float: left;
+	margin-bottom: 15px;
+}
+.footer_cen a {
+	padding: 0 10px 0 11px;
+	background: url('../images/footer/link_bar.gif') no-repeat left 1px;
+}
+.footer_cen li:first-child a {
+	padding-left: 0;
+	background: none;
+}
+.footer_cen p {
+	line-height: 17px;
+}
+.other_link {
+	float: right;
+	margin-top:36px;
+}
+.other_link > * {
+	float: left;
+	margin-left: 20px;
+}
+.wa {
+	display: block;
+	width: 51px;
+	height: 34px;
+	background: url('../images/footer/wa2015.gif') no-repeat;
+	text-indent: -9999px;
+}
+.footer_banner {
+	display: block;
+	width: 145px;
+	height: 33px;
+	background: url('../images/footer/footer_banner.gif') no-repeat;
+	text-indent: -9999px;
+}
+.family_site_go {
+	position: relative;
+}
+.family_site_group {
+	display: block;
+	width: 153px;
+	height: 30px;
+	background: url('../images/footer/family_site/img_family_site_off.png') no-repeat;
+	text-indent: -9999px;
+}
+#family_site {
+	position: absolute;
+	bottom:30px;
+	left: 0;
+	background-color: #FFFFFF;
+}
+/*javascript로 제어하여 클릭 시 view클래스를 부여하여 background제어*/
+.family_site_group.view {
+	background-image: url('../images/footer/family_site/img_family_site_on.png');
+}
+#family_site a {
+	display: none;
+}
+.family_site_group.view + #family_site a {
+	display: block;
+	padding: 0 10px 0 10px;
+	width: 131px;
+	height: 100%;
+	border: 1px solid #D1D1D1;
+	border-bottom: 0;
+	line-height: 30px;
+
+}
+
+
+
+/*etc*/
+.business_areas {
+	position: relative;
+}
+.toggle_arrow {
+	position: absolute;
+	top: -10px;
+	left: 0px;
+	width: 100%;
+	height: 9px;
+	background: url('../images/main/business_areas/arrow_gray.gif') no-repeat;
+}
+.next_commerce_arrow {
+	background-position: 60px 0;
+}
+.digital_platform_arrow {
+	background-position: 150px 0;
+}
+.maketing_communication_arrow {
+	background-position: 250px 0;
+}
+.toggle_view {
+	display: none;
+	position: absolute;
+	top:190px;
+	left: 0;
+	margin-top: 40px;
+	padding: 0 40px 0 40px;
+	width: 1200px;
+	border-top: 2px solid #666666;
+	border-bottom: 1px solid #D6D6D6;
+	background-color:#EEEEEE;
+}
+.toggle_view.view {
+	display: block;
+}
+.toggle_view > img {
+	padding-top: 40px;
+	margin-bottom: 15px;
+}
+.commerce_view,
+.platform_view,
+.communication_view {
+	overflow: hidden;
+	padding-bottom: 43px;
+	/*width 값은 javascript로 재설정 필요*/
+	/*width: 1164px;*/
+}
+.commerce_view ul {
+	width: 6400px;
+}
+.platform_view ul {
+	width: 4400px;
+}
+.communication_view ul {
+	width: 2800px;
+}
+.toggle_view li {
+	float: left;
+	width: 400px;
+}
+.toggle_view .radio_btn a {
+	margin: 0 4px;
+	width: 13px;
+	height: 13px;
+	background: url('../images/main/business_areas/nav_slider_gray.gif') no-repeat;
+	background-position: -40px 0;
+}
+.toggle_view .direction_btn {
+	display: block;
+	float: left;
+	width: 20px;
+	height: 30px;
+	background-repeat: no-repeat;
+}
+.toggle_view .prev_btn {
+	left: 41px;
+	background-image: url('../images/main/business_areas/arrow_biz.png');
+	background-position: left top;
+}
+.toggle_view .next_btn {
+	right: 41px;
+	margin-left: 15px;
+	padding-left: 16px;
+	background-image: url('../images/main/business_areas/arrow_biz.png'), url('../images/main/business_areas/bg_biz_gap.gif');
+	background-position: right top, left 2px;
+}
+.toggle_view .clse_btn {
+	display: block;
+	position: absolute;
+	top: 30px;
+	right: 50px;
+	width: 11px;
+	height: 13px;
+	background: url('../images/main/business_areas/btn_toogle_close.gif') no-repeat;
+	text-indent: -9999px;
+}
+.toggle_view .next_prev_btn {
+	position: absolute;
+	bottom:20px;
+	right: 50px;
+}
+.commerce_btn_group, 
+.platform_btn_group,
+.communication_btn_group {
+	padding-bottom: 30px;
+}
